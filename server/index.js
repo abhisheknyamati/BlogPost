@@ -6,7 +6,12 @@ import blogRoutes from "./routes/blogRoutes.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:5173', 'http://192.168.1.6:5173'],// Replace with your React app's URL or '*' for any origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const PORT = 5000 || process.env.PORT;

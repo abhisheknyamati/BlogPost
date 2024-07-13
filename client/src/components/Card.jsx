@@ -1,21 +1,18 @@
+import React from "react";
 
-function Card(){
-    return(
-        <div className="p-5 flex flex-wrap">
-            <div className="w-52 border-2 h-64 p-5 border-black font-mono m-5">
-                <div className="title text-xl font-bold">Title</div>
-                <div className="desc text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab mollitia aliquam soluta blanditiis cumque natus optio explicabo maxime facere aperiam.</div>
-                <div className="author text-sm font-semibold">@abhishek_nyamati</div>
-                <div className="time text-sm bottom-0 right-0">11:11 am</div>
-            </div>
-            <div className="w-52 border-2 h-64 p-5 border-black font-mono">
-                <div className="title text-xl font-bold">Title</div>
-                <div className="desc text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab mollitia aliquam soluta blanditiis cumque natus optio explicabo maxime facere aperiam.</div>
-                <div className="author text-sm font-semibold">@abhishek_nyamati</div>
-                <div className="time text-sm bottom-0 right-0">11:11 am</div>
-            </div>
-        </div>
-    )
+function Card({ title, desc, author, time }) {
+  return (
+    <div className="w-52 border-2 p-4 border-black font-mono flex flex-col justify-between">
+      <div>
+        <div className="title text-xl font-bold">{title}</div>
+        <div className="desc text-sm text-justify">{desc}</div>
+      </div>
+      <div className="flex flex-col items-end">
+        <div className="author text-sm font-semibold">{author}</div>
+        <div className="time text-sm">{time}</div>
+      </div>
+    </div>
+  );
 }
 
-export default Card
+export default Card;

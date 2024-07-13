@@ -4,10 +4,10 @@ import Blog from '../models/Blog.js';
 
 const router = express.Router();
 
-router.post("/blog", async (req, res) => {
+router.post("/createBlog", async (req, res) => {
     try {
-        const { name, title, desc } = req.body;
-        const newBlog = new Blog({name, title, desc});
+        const { title, desc, author } = req.body;
+        const newBlog = new Blog({ title, desc, author });
         await newBlog.save();
         res.status(201).json(newBlog);
     } catch (error) {
@@ -16,9 +16,9 @@ router.post("/blog", async (req, res) => {
     }
 });
 
-router.get("/blog", async (req, res) => {
+router.get("/blogs", async (req, res) => {
     try {
-        const blogs = await Blog.find({});
+        const blogs = await  Blog.find({});
         res.status(200).json(blogs);
     } catch (error) {
         console.log("Error in fetching blog",error.message);
@@ -69,8 +69,8 @@ router.put("/blog/:id", async (req, res) => {
     }
 
     try {
-        const {name, title, desc } = req.body;
-        const updatedBlog = await Blog.findByIdAndUpdate(id, {name, title, desc});
+        const { title, desc, author } = req.body;
+        const updatedBlog = await Blog.findByIdAndUpdate(id, { title, desc, author });
         if (!updatedBlog) {
             return res.status(404).json({ error: "Blog not found" });
         }
